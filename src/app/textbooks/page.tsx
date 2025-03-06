@@ -3,7 +3,6 @@ import TextbookService from '@/services/TextbookService'
 
 export default async function TextbookSearch () {
   const textbooks = await TextbookService.getTextbooks()
-  console.log(textbooks.data[0].image)
   return (
     <div>{textbooks.data.map(book => (
       <div key={book.id}>

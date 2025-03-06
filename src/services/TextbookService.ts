@@ -1,13 +1,13 @@
 import { AxiosRequestConfig } from 'axios';
 import apiClient from './api';
-import { TextbookType } from '@/lib/types';
+import { TextbookType } from '@/utils/types';
 
 const apiFunctions =  {
   getTextbooks(params? : AxiosRequestConfig) {
     return apiClient.get<TextbookType[]>('/textbooks/', params);
   },
   getUserTextbooks(username: string) {
-    return apiClient.get('/textbooks/', { 
+    return apiClient.get('/textbooks/', {
       params: { username }
     });
   },
