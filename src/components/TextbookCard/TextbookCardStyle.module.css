@@ -1,0 +1,34 @@
+.detailsButton {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+  
+.addToCartButton {
+    background-color: #8b0a1a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.relativeModule:hover .detailsButton {
+    opacity: 1;
+}
+
+.relativeModule:hover .addToCartButton {
+    opacity: 1;
+}
+
+.textbookCard {
+    flex: 1 1 calc(25% - 1rem);
+    margin: 0.5rem;
+}

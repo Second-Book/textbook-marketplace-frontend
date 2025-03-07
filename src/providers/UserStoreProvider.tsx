@@ -15,6 +15,7 @@ const UserStoreProvider = ({children, }: userStoreProviderProps) => {
     const userRef = useRef<UserStoreApi>(null)
     if (!userRef.current) {
         userRef.current = createUserStore()
+        console.log("created user store")
     }
     return (
         <UserStoreContext.Provider value={userRef.current}>
@@ -22,6 +23,5 @@ const UserStoreProvider = ({children, }: userStoreProviderProps) => {
         </UserStoreContext.Provider>
     )
 }
-
 
 export default UserStoreProvider

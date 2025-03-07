@@ -1,7 +1,8 @@
 "use client"
 
-import useUserStore from '@/hooks/useUserStore'
 import Form from 'next/form'
+import { redirect } from 'next/navigation'
+import useUserStore from '@/hooks/useUserStore'
 import authService from '@/services/authService'
 
 const LoginForm = () => {
@@ -15,6 +16,7 @@ const LoginForm = () => {
         }
         const result = authService.login(credentials, store)
         console.log(result)
+        redirect("/textbooks")
     }
 
     return (
@@ -34,7 +36,7 @@ const LoginForm = () => {
                 </Form>
                 <p v-if="errorMessage" className="text-red-500 mt-2">{"test"}</p>
             </div>
-        </div>    
+        </div>
     )
 }
 
