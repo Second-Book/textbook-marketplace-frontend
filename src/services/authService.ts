@@ -1,4 +1,4 @@
-import { CredentialsType } from '@/utils/types';
+import { CredentialsType, UserDataType } from '@/utils/types';
 import apiClient from './api';
 import { UserStore } from '@/stores/userStore';
 
@@ -7,7 +7,7 @@ const authService = { //only works on the client
   async login(credentials: CredentialsType, store: UserStore) {
     try {
       const response = await apiClient.post('/token/', credentials);
-      const userResponse = await apiClient.get('/users/me/', {
+      const userResponse = await apiClient.get<UserDataType>('/users/me/', {
         headers: {
           'Authorization': `Bearer ${response.data.access}`
         }

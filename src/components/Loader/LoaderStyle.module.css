@@ -1,0 +1,32 @@
+.loaderOverlay {
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+  }
+  
+  .loaderContent {
+    text-align: center;
+  }
+  
+  .spinner {
+    font-size: 2em;
+    color: #3498db;
+    margin-bottom: 8px;
+  }
+  
+  .animateSpin {
+    animation: spin 1s linear infinite;
+  }
+  
+  .loaderMessage {
+    color: #2c3e50;
+    font-size: 1.1em;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

@@ -27,3 +27,22 @@ export type CredentialsType = {
     username: string;
     password: string;
 }
+
+export type UserDataType = {
+    id: number;
+    password: string;
+    last_login: string | null;
+    is_superuser: boolean;
+    username: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    is_staff: boolean;
+    date_joined: string;
+    telegram_id: string;
+    telephone: string;
+    is_seller: boolean;
+    is_active: boolean;
+    groups: unknown[];
+    user_permissions: unknown[];
+  };

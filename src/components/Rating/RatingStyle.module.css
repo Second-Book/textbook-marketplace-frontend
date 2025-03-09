@@ -1,0 +1,54 @@
+.rating {
+    display: inline-flex;
+    gap: 4px;
+  }
+  
+  .star {
+    position: relative;
+    cursor: default;
+  }
+  
+  .star.clickable {
+    cursor: pointer;
+  }
+  
+  .star svg {
+    width: 100%;
+    height: 100%;
+    fill: #ddd;
+    transition: fill 0.2s;
+  }
+  
+  .star.filled svg,
+  .star.halfFilled svg {
+    fill: #f1c40f;
+  }
+  
+  .small {
+    height: 16px;
+  }
+  
+  .medium {
+    height: 24px;
+  }
+  
+  .large {
+    height: 32px;
+  }
+  
+  .star:hover svg {
+    fill: #f1c40f;
+  }
+  
+  .star:hover ~ .star svg {
+    fill: #ddd;
+  }
+  
+  .rating:hover .star svg {
+    fill: #ddd;
+  }
+  
+  .rating:hover .star:hover svg,
+  .rating:hover .star:hover ~ .star svg {
+    fill: #f1c40f;
+  }

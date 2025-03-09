@@ -1,13 +1,14 @@
+import { UserDataType } from "@/utils/types";
 import { createStore } from "zustand";
 
 export type UserState = {
     isAuthenticated: boolean;
-    user: object | null
+    user: UserDataType | null
 }
 
 export type UserActions = {
     setAuthentication: (isAuthenticated: boolean) => void;
-    setUser: (user: object) => void;
+    setUser: (user: UserDataType) => void;
     clearUser: () => void
     logout: () => void
 }
@@ -23,7 +24,7 @@ export const createUserStore = (initState: UserState = defaultInitState) => {
     return createStore<UserStore>()((set) => ({
         ...initState,
         setAuthentication: (isAuthenticated: boolean) => set(() => ({isAuthenticated: isAuthenticated})),
-        setUser: (user: object) => set(() => {
+        setUser: (user: UserDataType) => set(() => {
             localStorage.setItem("user_data", JSON.stringify(user))
             return {user: user}
         }),
