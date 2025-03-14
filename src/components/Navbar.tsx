@@ -15,7 +15,7 @@ const Navbar = () => {
             {!isAuthenticated && <Link href="/login" className="focus:outline-none focus:ring-2 focus:ring-white">Sign In</Link>}
             {!isAuthenticated && <Link href="/signup" className="focus:outline-none focus:ring-2 focus:ring-white">Sign Up</Link>}
             {isAuthenticated && <Link v-if="isAuthenticated" href="/profile" className="focus:outline-none focus:ring-2 focus:ring-white">Profile</Link>}
-            {isAuthenticated && <a onClick={() => logout()} className="focus:outline-none focus:ring-2 focus:ring-white">Logout</a>}
+            {isAuthenticated && <a onClick={() => logout()} className="focus:outline-none focus:ring-2 focus:ring-white cursor-pointer">Logout</a>}
             </nav>
         </header>
     )

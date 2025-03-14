@@ -1,3 +1,5 @@
+
+
 export type ImageType = {
     preview: string;
     detail: string;
@@ -45,4 +47,4 @@ export type UserDataType = {
     is_active: boolean;
     groups: unknown[];
     user_permissions: unknown[];
-  };
+}

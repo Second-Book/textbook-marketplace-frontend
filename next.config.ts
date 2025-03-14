@@ -1,18 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/textbooks",
-        permanent: true
-      },
-    ]
-  },
-};
-
-module.exports = {
   images: {
     remotePatterns: [
       {
@@ -24,6 +12,15 @@ module.exports = {
       },
     ],
   },
-}
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/textbooks",
+        permanent: true
+      },
+    ]
+  },
+};
 
 export default nextConfig;

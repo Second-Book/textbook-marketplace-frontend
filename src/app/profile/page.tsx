@@ -6,13 +6,19 @@ import { ChangeEvent, useRef, useState } from 'react'
 import useUserStore from '@/hooks/useUserStore'
 import Rating from '@/components/Rating/Rating'
 import ProfileStyle from './ProfileStyle.module.css'
+import formatDate from '@/utils/formatDate'
+import UserTextbookGrid from '@/components/UserTextbookGrid/UserTextbookGrid'
+import CustomError from '@/components/CustomError'
+import { useRouter } from 'next/navigation'
 
 const Profile = () => {
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isOwnProfile, setIsOwnProfile] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const {user} = useUserStore((state) => state)
+  const router = useRouter()
 
   const triggerAvatarUpload = () => {
     if (fileInputRef.current) {
@@ -27,16 +33,9 @@ const Profile = () => {
     console.log(file)
   }
 
-  const formatDate = (date: string) => {
-    return new Date(date).toLocaleString('en', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    })
-  }
-
   return (
-    <div className={`${ProfileStyle.userProfile} max-w-4xl mx-auto p-6`}>
+    <>
+    {user ? <div className={`${ProfileStyle.userProfile} max-w-4xl mx-auto p-6`}>
     {/* <div v-if="loading" className="text-center py-10">
       <TheLoader />
     </div> */}
@@ -52,15 +51,15 @@ const Profile = () => {
       <div className={`${ProfileStyle.profileHeader} flex gap-6 mb-8`}>
         <div className={`${ProfileStyle.avatarWrapper} relative`}>
           <Image
-            src="/user-placeholder"
+            src="/user-placeholder.jpg"
             alt="test"
-            width={32}
-            height={32}
+            width={128}
+            height={128}
             className="w-32 h-32 rounded-full object-cover"
           />
           {isOwnProfile && <button
             className="absolute bottom-0 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-black bg-opacity-60 text-white rounded-full text-sm"
-            onClick={() => triggerAvatarUpload}
+            onClick={() => triggerAvatarUpload()}
           >
             Change
           </button>}
@@ -174,55 +173,14 @@ const Profile = () => {
         </div>
       </div>}
 
-      <div className={`${ProfileStyle.textbooksSection} mt-8`}>
-        <h3 className="text-lg font-medium text-gray-700">My Textbooks</h3>
-        
-        {/* <div v-if="loading" className="text-center py-4">
-          <TheLoader />
-        </div>
-
-        <div v-else-if="error" className="text-red-600 py-4">
-          {{ error }}
-        </div> */}
-
-        <div v-else-if="!textbooks.length" className="text-gray-500 py-4">
-          No textbooks found
-        </div>
-
-        {/* <div v-else className="textbooks-list mt-4 space-y-4">
-          <div v-for="textbook in textbooks" 
-              :key="textbook.id"
-              className="textbook-item p-4 border rounded-lg hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="font-medium text-lg">{{ textbook.title }}</h4>
-                <p className="text-gray-600">Author: {{ textbook.author }}</p>
-                <p className="text-gray-600">Grade: {{ textbook.grade }}</p>
-                <p className="text-gray-600">Price: ${{ textbook.price }}</p>
-                <p className="text-sm text-gray-500">Added: {{ formatDate(textbook.createdAt) }}</p>
-              </div>
-              <div className="flex space-x-2">
-                <button 
-                  @click="editTextbook(textbook)"
-                  className="px-3 py-1 text-blue-600 hover:bg-blue-50 rounded">
-                  Edit
-                </button>
-                <button 
-                  @click="deleteTextbook(textbook.id)"
-                  className="px-3 py-1 text-red-600 hover:bg-red-50 rounded">
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
-      </div>
+        <UserTextbookGrid />
       </div>
 
       <Link href="/new-textbook" className="mt-8 inline-block px-4 py-2 bg-blue-500 text-white rounded">
         Add a New Textbook
       </Link>
-  </div>
+  </div> : <CustomError text="Please log in" onClick={() => router.push("/login")}/>}
+  </>
   )
 }
 

@@ -32,11 +32,10 @@ export const createUserStore = (initState: UserState = defaultInitState) => {
             localStorage.removeItem("user_data")
             return {isAuthenticated: false}
         }),
-        logout: () => set((state) => {
+        logout: () => set(() => {
             localStorage.removeItem("access_token")
             localStorage.removeItem("refresh_token")
-            state.clearUser()
-            return {isAuthenticated: false}
+            return {user: null, isAuthenticated: false}
         })
     }))
 }

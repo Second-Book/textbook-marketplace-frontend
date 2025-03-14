@@ -3,7 +3,7 @@ import apiClient from './api';
 import { UserStore } from '@/stores/userStore';
 
 
-const authService = { //only works on the client
+const authService = {
   async login(credentials: CredentialsType, store: UserStore) {
     try {
       const response = await apiClient.post('/token/', credentials);

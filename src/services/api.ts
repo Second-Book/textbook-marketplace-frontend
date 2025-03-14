@@ -12,7 +12,7 @@ const apiClient = axios.create({
 apiClient.interceptors.response.use(
   response => response,
   async error => {
-    if (error.response.status === 401 && localStorage.getItem('refresh_token')) {
+    if (error.response?.status === 401 && localStorage && localStorage.getItem('refresh_token')) {
       try {
         const refreshToken = localStorage.getItem('refresh_token');
         const response = await apiClient.post('/token/refresh/', { refresh: refreshToken });
@@ -23,7 +23,6 @@ apiClient.interceptors.response.use(
       } catch (refreshError) {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
-        window.location.href = '/login'; // Redirect to login
       }
     }
     return Promise.reject(error);
