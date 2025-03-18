@@ -36,17 +36,6 @@ const Profile = () => {
   return (
     <>
     {user ? <div className={`${ProfileStyle.userProfile} max-w-4xl mx-auto p-6`}>
-    {/* <div v-if="loading" className="text-center py-10">
-      <TheLoader />
-    </div> */}
-
-    {/* <div v-else-if="error" className="text-center py-10 text-red-600">
-      <p>{{ error }}</p>
-      <button @click="loadProfile" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-        Try Again
-      </button>
-    </div> */}
-
     <div className={ProfileStyle.profileContent}>
       <div className={`${ProfileStyle.profileHeader} flex gap-6 mb-8`}>
         <div className={`${ProfileStyle.avatarWrapper} relative`}>

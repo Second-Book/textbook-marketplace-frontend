@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import RatingStyle from "./RatingStyle.module.css"
+import { useState } from "react"
 
 interface RatingProps {
     value: number,
@@ -8,6 +9,12 @@ interface RatingProps {
 }
 
 const Rating = ({value = 0, readOnly = false, size = "medium"}: RatingProps) => {
+
+  const [hover, setHover] = useState<number | null>(null)
+  const handleClick = (i: number) => {
+    console.log("star clicked: ", i, "value: ", value)
+  }
+
   return (
     <div className={clsx({
         [RatingStyle.rating]: true,
@@ -20,10 +27,13 @@ const Rating = ({value = 0, readOnly = false, size = "medium"}: RatingProps) => 
                 key={i}
                 className={clsx({
                     [RatingStyle.star] : true,
-                    [RatingStyle.filled]: i <= value-1,
-                    [RatingStyle.halfFilled]: i - 0.5 === value-1,
+                    [RatingStyle.filled]: hover == null ? i <= value-1 : i <= hover,
+                    [RatingStyle.halfFilled]: hover == null && i - 0.5 === value-1,
                     [RatingStyle.clickable]: !readOnly
                 })}
+                onClick={() => handleClick(i+1)}
+                onMouseEnter={() => setHover(() => i)}
+                onMouseLeave={() => setHover(() => null)}
             >
         <svg
             viewBox="0 0 24 24"

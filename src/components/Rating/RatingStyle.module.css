@@ -1,11 +1,11 @@
 .rating {
     display: inline-flex;
-    gap: 4px;
   }
   
   .star {
     position: relative;
     cursor: default;
+    padding-inline: 2px;
   }
   
   .star.clickable {
@@ -34,21 +34,4 @@
   
   .large {
     height: 32px;
-  }
-  
-  .star:hover svg {
-    fill: #f1c40f;
-  }
-  
-  .star:hover ~ .star svg {
-    fill: #ddd;
-  }
-  
-  .rating:hover .star svg {
-    fill: #ddd;
-  }
-  
-  .rating:hover .star:hover svg,
-  .rating:hover .star:hover ~ .star svg {
-    fill: #f1c40f;
   }
