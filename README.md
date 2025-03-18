@@ -7,8 +7,8 @@ This is the front end portion of the textbook marketplace app, written in Next.j
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/frontend-repo.git
-   cd frontend-repo
+   git clone https://github.com/Second-Book/textbook-marketplace-frontend
+   cd textbook-marketplace-frontend
    ```
 
 2. Install dependencies:
