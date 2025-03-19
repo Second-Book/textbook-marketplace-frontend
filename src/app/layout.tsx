@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import UserStoreProvider from "@/providers/UserStoreProvider";
@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "EduMarket",
   description: "Your place for used books",
 };
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 0
+}
 
 export default function RootLayout({
   children,
