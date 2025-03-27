@@ -1,6 +1,8 @@
 import TextbookService from '@/services/TextbookService'
 import SearchTextbooksForm from '@/components/SearchTextbooksForm/SearchTextbooksForm'
 
+export const dynamic = "force-dynamic"
+
 export default async function TextbookSearch () {
   const textbooks = await TextbookService.getTextbooks()
 

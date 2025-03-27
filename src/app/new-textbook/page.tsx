@@ -1,5 +1,4 @@
 import NewTextbookForm from '@/components/NewTextbookForm'
-import React from 'react'
 
 const NewTextbook = () => {
   return (

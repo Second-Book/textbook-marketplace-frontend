@@ -1,13 +1,22 @@
 "use client"
 
 import { submitTextbook } from "@/utils/actions"
-import { useActionState } from "react"
+import { useActionState, useEffect, useState } from "react"
 
 const NewTextbookForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, action] = useActionState(submitTextbook, {
     errors: ""
   })
+
+  const [accessToken, setAccessToken] = useState("")
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token")
+    if (token) {
+      setAccessToken(token)
+    }
+  }, [])
   
   return (
     <form className="w-full max-w-lg bg-white p-8 rounded shadow-md" action={action}>
@@ -64,7 +73,7 @@ const NewTextbookForm = () => {
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone_contact">Phone Contact</label>
         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_contact" name="phone_contact" type="text" v-model="form.phone_contact" />
       </div>
-      <input className="hidden" type="text" defaultValue={localStorage.getItem("access_token") || ""} name="access_token" />
+      <input className="hidden" type="text" defaultValue={accessToken} name="access_token" />
       <div className="flex items-center justify-between">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Add Textbook
